@@ -1,0 +1,31 @@
+import styled from 'styled-components';
+
+export const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 100;
+`;
+
+export const ModalWindow = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 670px;
+  padding: 40px;
+  background-color: #fff;
+
+  input {
+    margin-left: 8px;
+  }
+`;
+
+export const Button = styled.button`
+  width: 56px;
+  margin-top: 24px;
+`;

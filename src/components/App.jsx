@@ -1,16 +1,29 @@
+import { useEffect, useState } from 'react';
+import { ToDoForm } from './ToDoForm/ToDoForm';
+import { ToDoList } from './ToDoList/ToDoList';
+
 export const App = () => {
+  const [list, setList] = useState(
+    () => JSON.parse(localStorage.getItem('list')) || []
+  );
+
+  useEffect(() => {
+    localStorage.setItem('list', JSON.stringify(list));
+  }, [list]);
+
+  const addToDo = data => {
+    const newToDo = {
+      id: `${list.length + 1}.`,
+      ...data,
+    };
+
+    setList(prevState => [...prevState, newToDo]);
+  };
+
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <>
+      <ToDoForm addToDo={addToDo} />
+      <ToDoList list={list} />
+    </>
   );
 };
